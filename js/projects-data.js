@@ -152,5 +152,24 @@ const PROJECTS = [
       { k: "Status", v: "Detection algorithm in dev" }
     ],
     images: []
+  },
+  {
+    id: "stirling-engine",
+    title: "Stirling Engine",
+    tags: ["Machining", "Manufacturing", "Precision Fabrication", "Tolerancing"],
+    status: "In Progress",
+    date: "MEAM 2010 — Fall 2026",
+    summary:
+      "A tabletop Stirling engine machined almost entirely from raw stock — lathe, mill, and CNC work building toward a fully assembled, running engine.",
+    details: [
+      "MEAM 2010 builds a Stirling engine in three stages: starting from a few provided components, then machining parts directly from engineering drawings, and finally designing and manufacturing custom elements — mounting block, piston, bedplate, crankshaft bearing tube, flywheel subassembly, and more.",
+      "Manufacturing the roughly 15-18 parts means working across the manual mill, lathe, and Prototrak CNC mill, with metrology and tolerancing tying it all together — every fit has to be precise enough for the finished engine to actually run under its own power."
+    ],
+    specs: [
+      { k: "Machines", v: "Mill, Lathe, Prototrak CNC" },
+      { k: "Parts", v: "15+ machined components" },
+      { k: "Focus", v: "Metrology & tolerancing" }
+    ],
+    images: []
   }
 ];

@@ -48,7 +48,8 @@
       .join("");
 
     const card = document.createElement("article");
-    card.className = "project-card" + (index % 2 === 1 ? " alt" : "");
+    card.className = "project-card reveal" + (index % 2 === 1 ? " alt" : "");
+    card.style.transitionDelay = `${(index % 4) * 70}ms`;
     card.setAttribute("data-id", project.id);
     card.innerHTML = `
       <div class="thumb ${hasImages ? "" : "placeholder"}">${thumbHTML}</div>
@@ -74,9 +75,10 @@
     const trackListEl = document.getElementById("track-list");
     if (!trackListEl || typeof TRACKS === "undefined") return;
 
-    TRACKS.forEach((t) => {
+    TRACKS.forEach((t, i) => {
       const card = document.createElement("div");
-      card.className = "track-card";
+      card.className = "track-card reveal";
+      card.style.transitionDelay = `${(i % 4) * 70}ms`;
       card.innerHTML = `
         <div class="track-info">
           <span class="tag status">Unreleased</span>
@@ -158,6 +160,58 @@
     document.body.style.overflow = "";
   }
 
+  // ---- Intro / title screen ----
+  function initIntro() {
+    const intro = document.getElementById("intro-screen");
+    if (!intro) return;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finish = () => {
+      intro.classList.add("hide");
+      document.body.classList.remove("intro-active");
+      setTimeout(() => intro.remove(), prefersReduced ? 0 : 700);
+    };
+    if (prefersReduced) {
+      finish();
+    } else {
+      setTimeout(finish, 1100);
+    }
+  }
+
+  // ---- Scroll-triggered reveal animations ----
+  function initScrollReveal() {
+    const els = document.querySelectorAll(".reveal");
+    if (!els.length) return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced || !("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("in-view"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+    );
+
+    els.forEach((el) => observer.observe(el));
+  }
+
+  // ---- Header shadow once the page has scrolled ----
+  function initHeaderScroll() {
+    const headerEl = document.querySelector("header");
+    if (!headerEl) return;
+    const update = () => headerEl.classList.toggle("scrolled", window.scrollY > 40);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  }
+
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closeModal();
   });
@@ -178,6 +232,9 @@
 
   renderProjects();
   renderTracks();
+  initIntro();
+  initScrollReveal();
+  initHeaderScroll();
 
   // Footer year
   const yearEl = document.getElementById("year");

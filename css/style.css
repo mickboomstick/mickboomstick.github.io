@@ -23,6 +23,77 @@
 
 html { scroll-behavior: smooth; }
 
+body.intro-active { overflow: hidden; }
+
+/* ---------------- Intro / title screen ---------------- */
+
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+#intro-screen .intro-name {
+  font-family: var(--serif);
+  font-size: clamp(26px, 5vw, 50px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--bg);
+  opacity: 0;
+  transform: translateY(14px);
+  animation: introIn 0.9s cubic-bezier(.22,.61,.36,1) 0.15s forwards;
+}
+#intro-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+@keyframes introIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- Scroll reveal ---------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(.22,.61,.36,1), transform 0.7s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline .timeline-item:nth-child(1) { transition-delay: 0ms; }
+.timeline .timeline-item:nth-child(2) { transition-delay: 80ms; }
+.timeline .timeline-item:nth-child(3) { transition-delay: 160ms; }
+.timeline .timeline-item:nth-child(4) { transition-delay: 240ms; }
+.timeline .timeline-item:nth-child(5) { transition-delay: 320ms; }
+
+.about-grid .about-block:nth-child(1) { transition-delay: 0ms; }
+.about-grid .about-block:nth-child(2) { transition-delay: 90ms; }
+.about-grid .about-block:nth-child(3) { transition-delay: 180ms; }
+.about-grid .about-block:nth-child(4) { transition-delay: 270ms; }
+
+.music-hero > *:nth-child(1) { transition-delay: 0ms; }
+.music-hero > *:nth-child(2) { transition-delay: 120ms; }
+
+.music-break-duo figure:nth-child(1) { transition-delay: 0ms; }
+.music-break-duo figure:nth-child(2) { transition-delay: 120ms; }
+
+.contact-grid > *:nth-child(1) { transition-delay: 0ms; }
+.contact-grid > *:nth-child(2) { transition-delay: 100ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  #intro-screen { transition: none; }
+  #intro-screen .intro-name { animation: none; opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -73,6 +144,11 @@ header {
   background: rgba(251, 250, 248, 0.86);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 0 0 rgba(22, 24, 27, 0);
+  transition: box-shadow 0.25s ease;
+}
+header.scrolled {
+  box-shadow: 0 8px 24px rgba(22, 24, 27, 0.06);
 }
 
 .nav {
@@ -337,6 +413,10 @@ section:last-of-type { border-bottom: none; }
 .tag[data-tag="arduino"]           { color: #00767a; background: #d7eeee; }
 .tag[data-tag="embedded-systems"]  { color: #2b3a67; background: #dde1ee; }
 .tag[data-tag="product-design"]    { color: #a5406a; background: #f4dde6; }
+.tag[data-tag="machining"]           { color: #9a4a1f; background: #f5ddc8; }
+.tag[data-tag="manufacturing"]       { color: #2f5f7a; background: #dbe9f0; }
+.tag[data-tag="precision-fabrication"] { color: #7a2f45; background: #f2dde3; }
+.tag[data-tag="tolerancing"]         { color: #4f6b2f; background: #e5edd9; }
 
 .project-card h3 {
   font-family: var(--serif);
