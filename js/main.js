@@ -168,18 +168,18 @@
     const finish = () => {
       intro.classList.add("hide");
       document.body.classList.remove("intro-active");
-      setTimeout(() => intro.remove(), prefersReduced ? 0 : 700);
+      setTimeout(() => intro.remove(), prefersReduced ? 0 : 600);
     };
     if (prefersReduced) {
       finish();
     } else {
-      setTimeout(finish, 1100);
+      setTimeout(finish, 1250);
     }
   }
 
   // ---- Scroll-triggered reveal animations ----
   function initScrollReveal() {
-    const els = document.querySelectorAll(".reveal");
+    const els = Array.from(document.querySelectorAll(".reveal, .reveal-wipe"));
     if (!els.length) return;
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -188,11 +188,25 @@
       return;
     }
 
+    // A `.reveal-wipe` element is clip-path'd down to zero rendered area until
+    // it's revealed — and Chromium's IntersectionObserver judges intersection
+    // against that clipped area, so the element itself never reports as
+    // intersecting. Watch its (unclipped) parent instead and toggle the class
+    // on the actual element once that parent scrolls into view.
+    const watchMap = new Map();
+    els.forEach((el) => {
+      const watchTarget =
+        el.classList.contains("reveal-wipe") && el.parentElement ? el.parentElement : el;
+      if (!watchMap.has(watchTarget)) watchMap.set(watchTarget, []);
+      watchMap.get(watchTarget).push(el);
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
+            const targets = watchMap.get(entry.target) || [entry.target];
+            targets.forEach((t) => t.classList.add("in-view"));
             observer.unobserve(entry.target);
           }
         });
@@ -200,7 +214,7 @@
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
 
-    els.forEach((el) => observer.observe(el));
+    watchMap.forEach((_, watchTarget) => observer.observe(watchTarget));
   }
 
   // ---- Header shadow once the page has scrolled ----
@@ -210,6 +224,20 @@
     const update = () => headerEl.classList.toggle("scrolled", window.scrollY > 40);
     update();
     window.addEventListener("scroll", update, { passive: true });
+  }
+
+  // ---- Thin progress bar showing scroll position down the page ----
+  function initScrollProgress() {
+    const bar = document.getElementById("scroll-progress");
+    if (!bar) return;
+    const update = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      bar.style.width = pct + "%";
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
   }
 
   overlay.addEventListener("click", (e) => {
@@ -235,6 +263,7 @@
   initIntro();
   initScrollReveal();
   initHeaderScroll();
+  initScrollProgress();
 
   // Footer year
   const yearEl = document.getElementById("year");

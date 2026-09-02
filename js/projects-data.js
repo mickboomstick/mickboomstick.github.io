@@ -156,7 +156,7 @@ const PROJECTS = [
   {
     id: "stirling-engine",
     title: "Stirling Engine",
-    tags: ["Machining", "Manufacturing", "Precision Fabrication", "Tolerancing"],
+    tags: ["Machining", "Manufacturing", "Fabricating", "Tolerancing"],
     status: "In Progress",
     date: "MEAM 2010 — Fall 2026",
     summary:

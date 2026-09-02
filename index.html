@@ -16,15 +16,45 @@
 <body class="intro-active">
 
 <div id="intro-screen" aria-hidden="true">
-  <span class="intro-name">Matthew Guadarrama</span>
+  <div class="intro-frame">
+    <span class="intro-name">Matthew Guadarrama</span>
+    <div class="intro-gears">
+      <svg class="gear gear-a" viewBox="0 0 100 100">
+        <circle class="gear-rim" cx="50" cy="50" r="30"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(45 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(90 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(135 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(180 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(225 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(270 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(315 50 50)"/>
+        <circle class="gear-hole" cx="50" cy="50" r="12"/>
+      </svg>
+      <svg class="gear gear-b" viewBox="0 0 100 100">
+        <circle class="gear-rim" cx="50" cy="50" r="30"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(45 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(90 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(135 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(180 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(225 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(270 50 50)"/>
+        <rect class="gear-tooth" x="44" y="2" width="12" height="18" rx="2" transform="rotate(315 50 50)"/>
+        <circle class="gear-hole" cx="50" cy="50" r="12"/>
+      </svg>
+    </div>
+  </div>
 </div>
 <noscript><style>
   #intro-screen{display:none!important;}
   body.intro-active{overflow:auto!important;}
   .reveal{opacity:1!important;transform:none!important;}
+  .reveal-wipe{clip-path:none!important;}
 </style></noscript>
 
 <header>
+  <div id="scroll-progress"></div>
   <nav class="nav" id="main-nav">
     <a href="#top" class="nav-name">Matthew Guadarrama</a>
     <ul class="nav-links">
@@ -43,7 +73,7 @@
   <section class="hero">
     <div class="wrap reveal">
       <span class="eyebrow">Mechanical Engineering &amp; Applied Mechanics</span>
-      <h1>I just like <em>making</em> things.</h1>
+      <h1>Creating, producing, <em>learning</em>.</h1>
       <p class="lede">
         I'm a Mechanical Engineering &amp; Applied Mechanics student at the University of Pennsylvania, currently
         researching hydrogen-powered turbojet propulsion with Penn Jet Propulsion. Some days that means taking a
@@ -57,7 +87,7 @@
       </div>
       <div class="hero-links">
         <a href="#work" class="btn">View Projects</a>
-        <a href="mailto:guad@engineering.penn.edu" class="btn ghost">Get in Touch</a>
+        <a href="mailto:guad@engineering.upenn.edu" class="btn ghost">Get in Touch</a>
       </div>
     </div>
   </section>
@@ -119,8 +149,8 @@
         </a>
       </div>
 
-      <figure class="music-break reveal">
-        <img src="assets/images/studio/folded-mixer.png" alt="FL Studio mixer view from the Folded remix session">
+      <figure class="music-break">
+        <img class="reveal-wipe" src="assets/images/studio/folded-mixer.png" alt="FL Studio mixer view from the Folded remix session">
       </figure>
 
       <div class="music-sub-head reveal">
@@ -131,8 +161,8 @@
       <div class="track-list" id="track-list"><!-- rendered by js/main.js from js/music-data.js --></div>
 
       <div class="music-break-duo">
-        <figure class="reveal"><img src="assets/images/studio/talking-body-vital.png" alt="Sound design in Vital for the Talking Body remix"></figure>
-        <figure class="reveal"><img src="assets/images/studio/folded-playlist-zoom.png" alt="FL Studio playlist detail from the Folded remix session"></figure>
+        <figure><img class="reveal-wipe" src="assets/images/studio/talking-body-vital.png" alt="Sound design in Vital for the Talking Body remix"></figure>
+        <figure><img class="reveal-wipe" src="assets/images/studio/folded-playlist-zoom.png" alt="FL Studio playlist detail from the Folded remix session"></figure>
       </div>
     </div>
   </section>
@@ -158,7 +188,8 @@
             </p>
             <p style="font-size:14px; color:var(--ink-faint);">
               Relevant coursework: MEAM 1010, Introduction to Mechanical Design (SolidWorks, 3D Printing, Laser Cutting) ·
-              MEAM 2010 (Machining, Manufacturing, Precision Fabrication, Tolerancing)
+              MEAM 2010, Machine Design and Manufacturing (Machining, Manufacturing, Fabricating, Tolerancing) ·
+              MEAM 2470, Mechanical Engineering Lab I (Experimentation, Analysis, Design)
             </p>
           </div>
 
@@ -169,6 +200,14 @@
               <span class="pill">3D Printing</span>
               <span class="pill">Laser Cutting</span>
               <span class="pill">CFD (ANSYS Fluent)</span>
+              <span class="pill">Machining</span>
+              <span class="pill">Manufacturing</span>
+              <span class="pill">Fabricating</span>
+              <span class="pill">Tolerancing</span>
+              <span class="pill">Experimentation</span>
+              <span class="pill">Analysis</span>
+              <span class="pill">Design</span>
+              <span class="pill">Adobe</span>
               <span class="pill">Python</span>
               <span class="pill">Excel</span>
             </div>
@@ -182,7 +221,6 @@
           <div class="about-block reveal">
             <h4>Outside the Lab</h4>
             <div class="pill-list">
-              <span class="pill">Music Production (FL Studio)</span>
               <span class="pill">Piano</span>
               <span class="pill">Guitar</span>
               <span class="pill">Club Tennis</span>
@@ -210,8 +248,8 @@
                   <div class="when">Sept 2025 — Present</div>
                 </div>
                 <ul>
-                  <li>Conducting research to develop a hydrogen-powered turbojet, with an emphasis on combustion efficiency.</li>
-                  <li>Applying SolidWorks for iterative micromixer modeling and CFD (Fluent) to simulate fluid and combustion dynamics of gas injection and chamber temperatures.</li>
+                  <li>Conducting research to develop a hydrogen-powered turbofan combustor, with an emphasis on combustion efficiency.</li>
+                  <li>Applying SolidWorks for iterative micromixer modeling, and CFD (Fluent) to simulate and analyze maldistribution, fluid, and combustion dynamics of gas injection and chamber combustion temperatures.</li>
                   <li>Designing the hydrogen delivery system using Darcy-Weisbach and choked-flow calculations, constrained by a 0.0025 kg/s mass flow requirement across the regulator, tubing, and injectors.</li>
                 </ul>
               </div>
@@ -230,6 +268,7 @@
                 <ul>
                   <li>Apply and manage the budget for the annual conference and chapter expenses.</li>
                   <li>Attend SHPE National Conventions for networking, community building, and professional development.</li>
+                  <li>Weekly meetings for event planning and outreach goals.</li>
                 </ul>
               </div>
 
@@ -245,7 +284,7 @@
                   <div class="when">Sept 2025 — Present</div>
                 </div>
                 <ul>
-                  <li>Manage chapter records, membership information, and internal/external communications.</li>
+                  <li>Manage chapter records, membership information, shared documents, and internal/external communications.</li>
                   <li>Track attendance and compile event feedback to support executive board decision-making.</li>
                 </ul>
               </div>
@@ -268,8 +307,9 @@
                   <div class="when">June — July 2026</div>
                 </div>
                 <ul>
-                  <li>Assisted with large-scale cat-bond / ILS client data processing, incorporating AI and scripting to streamline workflow.</li>
+                  <li>Assisted with large-scale cat-bond / ILS client data processing for a hedge fund with $11bn AUM, incorporating AI and scripting to streamline workflow.</li>
                   <li>Collaborated with IT to develop image processing software for OCR efficiency, and built an email-scraping script for CRM onboarding.</li>
+                  <li>Edited the firm's promotional trailer, compiled investor target sheets, and completed DDQs for compliance.</li>
                 </ul>
               </div>
 
@@ -305,7 +345,7 @@
           <h2>Let's build<br>something.</h2>
         </div>
         <div class="contact-links reveal">
-          <a href="mailto:guad@engineering.penn.edu">guad@engineering.penn.edu</a>
+          <a href="mailto:guad@engineering.upenn.edu">guad@engineering.upenn.edu</a>
           <a href="https://www.linkedin.com/in/matthew-guadarrama" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
