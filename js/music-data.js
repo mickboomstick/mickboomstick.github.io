@@ -23,13 +23,18 @@ const TRACKS = [
     file: "you-make-me-feel-remix.mp3"
   },
   {
-    title: "Beautiful",
-    subtitle: "Akon — Remix Demo",
-    file: "beautiful-remix-demo.mp3"
+    title: "Beautiful Unknown",
+    subtitle: "Said the Sky — Remix Demo",
+    file: "beautiful-unknown-remix-demo.mp3"
   },
   {
     title: "Stay",
     subtitle: "Remix — Buildup & Drop",
     file: "stay-remix-buildup-drop.mp3"
+  },
+  {
+    title: "Beat 2",
+    subtitle: "Original — Sped-Up Edit",
+    file: "beat-2-sped-up.mp3"
   }
 ];
