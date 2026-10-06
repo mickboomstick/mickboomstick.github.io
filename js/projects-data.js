@@ -57,7 +57,7 @@ const PROJECTS = [
       { k: "Process", v: "3D Print + Laser Cut" },
       { k: "Mechanism", v: "Hand-crank winch" }
     ],
-    images: ["catapult.png"]
+    images: ["catapult.png", "catapult-photo.jpg"]
   },
   {
     id: "lighthouse",
@@ -171,6 +171,7 @@ const PROJECTS = [
       { k: "Focus", v: "Metrology & tolerancing" }
     ],
     images: [
+      "stirling-engine-render-hero.jpg",
       "stirling-engine-render-1.png",
       "stirling-engine-render-2.png",
       "stirling-engine-machining-me.jpg",
