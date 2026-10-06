@@ -156,7 +156,7 @@ const PROJECTS = [
   {
     id: "stirling-engine",
     title: "Stirling Engine",
-    tags: ["Machining", "Manufacturing", "Fabricating", "Tolerancing"],
+    tags: ["SolidWorks", "Machining", "Manufacturing", "Fabricating", "Tolerancing"],
     status: "In Progress",
     date: "MEAM 2010 — Fall 2026",
     summary:
@@ -170,6 +170,12 @@ const PROJECTS = [
       { k: "Parts", v: "15+ machined components" },
       { k: "Focus", v: "Metrology & tolerancing" }
     ],
-    images: []
+    images: [
+      "stirling-engine-render-1.png",
+      "stirling-engine-render-2.png",
+      "stirling-engine-machining-me.jpg",
+      "stirling-engine-mill-1.jpg",
+      "stirling-engine-mill-2.jpg"
+    ]
   }
 ];

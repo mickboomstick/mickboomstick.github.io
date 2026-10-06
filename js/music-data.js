@@ -36,5 +36,10 @@ const TRACKS = [
     title: "Beat 2",
     subtitle: "Original — Sped-Up Edit",
     file: "beat-2-sped-up.mp3"
+  },
+  {
+    title: "Smooth",
+    subtitle: "Hyperpop Remix",
+    file: "smooth-hyperpop-remix.mp3"
   }
 ];
